@@ -80,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'api_django.wsgi:application'
+WSGI_APPLICATION = 'api_django.wsgi.application'
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', 'DEVELOPMENT')
 
