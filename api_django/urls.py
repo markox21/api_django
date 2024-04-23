@@ -19,7 +19,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from projects.api import ProjectViewSet
 from projects.views import SendEmailAPI
-from projects.viewscorreo import get_email_data
+from projects.viewscorreo import send_custom_email
 
 router = DefaultRouter()
 router.register('api/projects', ProjectViewSet, basename='projects')
@@ -27,7 +27,7 @@ router.register('api/projects', ProjectViewSet, basename='projects')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('send-email/', SendEmailAPI.as_view(), name='send_email'),
-    path('get-email-data/', get_email_data, name='get_email_data'),
+    path('get-email-data/', send_custom_email, name='get_email_data'),
     path('', include(router.urls))
 
 ]
