@@ -10,7 +10,7 @@ def send_custom_email(request):
                 .container {
                     text-align: center;
                     background-color: white;
-                    padding: 20px;
+                    padding: 21px;
                     border-radius: 10px;
                     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                     width: 300px;
