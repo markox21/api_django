@@ -11,22 +11,20 @@ supabase_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 supabase: Client = create_client(supabase_url, supabase_key)
 
 class CantidadProductosView(View):
-    def get(self, request, product_name):
-        
-        query = supabase.table("Productos").select("cantidad").filter("nombre", 'eq', product_name)
+    def get(self, request, category_name):
+        # Consulta todos los productos de la categoría especificada
+        query = supabase.table("Productos").select("nombre", "cantidad").filter("categoria_id", 'eq', category_name)
 
         response = query.execute()
         print("Respuesta de Supabase:", response)
 
         if response['status_code'] == 200:
             if response['data']:
-                
-                cantidad = response['data'][0]['cantidad']
-                return JsonResponse({"cantidad_productos": cantidad})
+                # Construye un diccionario con el nombre de cada producto y su cantidad
+                products_quantity = {product['nombre']: product['cantidad'] for product in response['data']}
+                return JsonResponse({"productos_cantidad": products_quantity})
             else:
-                return JsonResponse({"error": "No se encontraron productos con el nombre especificado."}, status=404)
+                return JsonResponse({"error": "No se encontraron productos en la categoría especificada."}, status=404)
         else:
             return JsonResponse({"error": "Ocurrió un error al consultar la base de datos de Supabase."}, status=500)
-
-
 
