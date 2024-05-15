@@ -9,5 +9,4 @@ router.register('api/projects', ProjectViewSet, 'projects')
 
 urlpatterns = router.urls + [
     path('send-email/', SendEmailAPI.as_view(), name='send-email'),
-    path('get-cantidad-productos/<str:category_name>/', CantidadProductosView.as_view(), name='get_cantidad_productos'),
 ]

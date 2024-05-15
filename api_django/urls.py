@@ -22,6 +22,7 @@ from projects.views import SendEmailAPI
 from projects.viewscorreo import send_custom_email
 from projects.viewscantidad import CantidadProductosView
 
+
 router = DefaultRouter()
 router.register('api/projects', ProjectViewSet, basename='projects')
 
